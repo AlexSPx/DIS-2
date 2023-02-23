@@ -1,0 +1,57 @@
+\documentclass[./lecture-1.tex]{subfiles}
+
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{pgfplots}
+
+\begin{document}
+\pgfplotsset{
+    right segments/.code={\pgfmathsetmacro\rightsegments{#1}},
+    right segments=3,
+    right/.style args={#1:#2}{
+        ybar interval,
+        domain=#1+((#2-#1)/\rightsegments):#2+((#2-#1)/\rightsegments),
+        samples=\rightsegments+1,
+        x filter/.code=\pgfmathparse{\pgfmathresult-((#2-#1)/\rightsegments)}
+    }
+}
+
+\pgfplotsset{
+    upperLimit segments/.code={\pgfmathsetmacro\upperlimitsegments{#1}},
+    upperLimit segments=3,
+    upperLimit/.style args={#1:#2}{
+        ybar interval,
+        domain=#1:#2,
+        samples=\upperlimitsegments+1,
+        x filter/.code=\pgfmathparse{\pgfmathresult}
+       }
+}
+
+\begin{tikzpicture}[/pgf/declare function={f=-15*(x-5)+(x-5)^3+50;}]
+\begin{axis}[
+    scale=0.6,
+    domain=0:9,
+    samples=100,
+    axis lines=middle
+]
+\addplot [thick] {f};
+\addplot [
+    red,
+    upperLimit segments=1,
+    upperLimit=3:6
+] {f};
+\addplot [
+    blue,
+    right segments = 1,
+    right=3:6
+] {f};
+\addplot [thick] {f};
+\end{axis}
+\end{tikzpicture}
+\end{document}

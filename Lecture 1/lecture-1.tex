@@ -8,6 +8,10 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+\usepackage{pgfplots}
+ 
+\usepackage{subfiles}
+
 \author{tbd}
 
 \title{DIS 2 Лекция 1}
@@ -16,4 +20,14 @@
 
 \maketitle
 
+\section{Определен интеграл}
+\begin{figure}[h!]
+    
+    \subfile{plots.tex}
+
+    \(f:[a,b] \to \mathbb{R} \), ограничена \\
+    \(\sup\{ f(x) : x \in [a, b] \} (b-a)\) - горна оценка \\
+    \(\inf\{ f(x) : x \in [a, b] \} (b-a)\) - долна оценка
+    
+\end{figure}
 \end{document}
