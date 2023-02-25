@@ -1,4 +1,4 @@
-\documentclass[./lecture-1.tex]{subfiles}
+\documentclass[../lecture-1.tex]{subfiles}
 
 \usepackage[utf8]{inputenc}
 \usepackage[bulgarian]{babel}
@@ -9,7 +9,6 @@
 \usepackage{mathtools}
 
 \usepackage{pgfplots}
-
 \begin{document}
 \pgfplotsset{
     right segments/.code={\pgfmathsetmacro\rightsegments{#1}},
@@ -33,23 +32,28 @@
        }
 }
 
-\begin{tikzpicture}[/pgf/declare function={f=-15*(x-5)+(x-5)^3+50;}]
+\begin{tikzpicture}[/pgf/declare function={f=-15*(x-5)+(x-5)^3+40;}]
 \begin{axis}[
-    scale=0.6,
+    scale=0.65,
     domain=0:9,
     samples=100,
-    axis lines=middle
+    axis lines=middle,
+    xtick distance=1,
+    xticklabels={,,,,a,,,,b},
+    yticklabels={},
+    ymin=-1,
+    ymax=70
 ]
 \addplot [thick] {f};
 \addplot [
     red,
-    upperLimit segments=1,
-    upperLimit=3:6
+    upperLimit segments=6,
+    upperLimit=3:7
 ] {f};
 \addplot [
     blue,
-    right segments = 1,
-    right=3:6
+    right segments = 6,
+    right=3:7
 ] {f};
 \addplot [thick] {f};
 \end{axis}

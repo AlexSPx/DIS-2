@@ -9,7 +9,9 @@
 \usepackage{mathtools}
 
 \usepackage{pgfplots}
- 
+\usepackage{xcolor}
+
+
 \usepackage{subfiles}
 
 \author{hornyta}
@@ -21,13 +23,56 @@
 \maketitle
 
 \section{Определен интеграл}
-\begin{figure*}[h!]
-    
-    \subfile{plots.tex}
 
-    \(f:[a,b] \to \mathbb{R} \), ограничена \\
-    \(\sup\{ f(x) : x \in [a, b] \} (b-a)\) - горна оценка \\
-    \(\inf\{ f(x) : x \in [a, b] \} (b-a)\) - долна оценка
+    \begin{minipage}{0.39\linewidth}
+        \subfile{./plots/plot1.tex}
+    \end{minipage}
+    \begin{minipage}{0.6\linewidth}
+        \(f:[a,b] \to \mathbb{R} \), ограничена \\
+        \(\sup\{ f(x) : x \in [a, b] \} (b-a)\) - горна оценка\\
+        \(\inf\{ f(x) : x \in [a, b] \} (b-a)\) - долна оценка
+        Лицето на фигурата варира между тези две стойности.
+    \end{minipage}
+    Правим подразбиване на интервала \([a, b] \tau: a=x_0<x_1<x_2<\dots<x_n=b\) 
+    (което е крайна редица)
     
-\end{figure*}
+    \begin{minipage}{0.39\linewidth}
+        \subfile{./plots/plot2.tex}
+    \end{minipage}
+    \begin{minipage}{0.6\linewidth}
+        \begin{center}
+            Разглеждаме \([x_{i-1}, x_i]\)
+        \end{center}
+        \[M_j := \sup\{f(x) : x \in [x_{i-1}, x_i] \}\]
+        \[m_j := \inf\{f(x) : x \in [x_{i-1}, x_i] \}\]
+    \end{minipage}
+    \(S_f(\tau) := \sum_{j=1}^{n} M_j(x_j-x_{j-1})\) - Голяма сума на Дарбу за \(f\) при подр. \(\tau\)
+    \(s_f(\tau) := \sum_{j=1}^{n} m_j(x_j-x_{j-1})\) - Малка сума на Дарбу за \(f\) при подр. \(\tau\) 
+
+    \paragraph{Лема 1} Ако \(\tau^* \ge \tau \), то \(S_f(\tau^*) \le S_f(\tau)\) и \(s_f(\tau^*) \le s_f(\tau)\)
+    \(\tau^*, \tau\) - 2 подразбивания, където \(\tau^*\) е "по-фино" от \(\tau\) (\(\tau^*\) съдържа всичките елементи на \(\tau\))
+    \subparagraph{Доказателство:} б.о.о \(\tau^*\) се получава от \(\tau\) с прибавяне на една точка
+    \[\tau: a=x_0<x_1<\dots<x_n=b\]
+    \[\tau^*: a=x_o<x_1<\dots<x_{i-1}<x^*<x_i<\dots<x_n=b\]
+    
+    \begin{equation*}
+        \begin{split}
+                & S_f(\tau)-S_f(\tau^*) = \\
+                & \sum_{j=1}^{n}\sup_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) -
+                \sum_{j=1}^{i-1}\sup_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) \\
+                & - \sup_{[x_{i-1},x^*]}f \cdot (x^*-x_{i-1}) -
+                \sup_{[x^*,x_i]}f \cdot (x_i-x^*) \\
+                & - \sum_{j=1}^{n}\sup_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) =\\
+                & = 
+                \sup_{[x_{i-1},x_i]}f \cdot (x_j-x_{i-1})
+                - \sup_{[x_{i-1}, x^*]}f \cdot (x^*-x_{i-1}) 
+                - \sup_{[x^*,x_i]}f \cdot (x^*-x_i) \ge \\
+                & = 
+                \sup_{[x_{i-1},x_i]}f \cdot (x_j-x_{i-1})
+                - \sup_{[x_{i-1}, x_i]}f \cdot (x^*-x_{i-1}) 
+                - \sup_{[x_{i-1},x_i]}f \cdot (x^*-x_i) = 0 \\
+                \square
+        \end{split}
+    \end{equation*}
+
 \end{document}
