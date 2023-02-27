@@ -117,4 +117,41 @@ $\lowint\limits_{a}^{b} f := sup\{s_f(\tau): \tau - \text{ подразбива�
 
 Oт Лема 2 $s_f(\tau_1)\leq S_f(\tau_2), \forall \tau_1,\tau_2$ подразбивания на $[a,b]$. Следователно
 $\lowint\limits_{a}^{b} f \leq S_f(\tau_2), \forall \tau_2$ подразбиване на $[a,b]$ и $\lowint\limits_{a}^{b} f \leq \upint\limits_{a}^{b} f \leq$.
+
+\opredelenie{Интегруемост по Риман}{
+    $f: [a,b] \to \mathbb{R}$ се нарича нтегруема по Риман ако е ограничена и 
+    $\lowint\limits_{a}^{b}f = \upint\limits_{a}^{b}f$. В този случай
+    числото $\lowint\limits_{a}^{b}f = \upint\limits_{a}^{b}f$ се нарича
+    Риманов интеграл по $f$ в $[a,b]$ и се бележи
+    $\int_{a}^{b}f$ или $\int_{a}^{b}f(x)\,dx$
+}
+
+\primer{Функция на Дирихле}{}
+
+\section*{Критерий за Интегруемост}
+Твърдим, че: \\
+\begin{center}
+    $f$ е интегрируема по Риман \\ 
+    $\xLeftrightarrow[]{\text{1}}$  \\
+    $\forall \epsilon >0 \exists \tau_1, \tau_2$ - подр. на $[a,b]: Sf(\tau_1)-sf(\tau_2) < \epsilon$ \\
+    $\xLeftrightarrow[]{\text{2}}$ \\
+    $\forall \epsilon >0 \exists \tau$ - подр. на $[a,b]: Sf(\tau)-sf(\tau) < \epsilon$ \\
+    $\iff$ \\
+    $\forall \epsilon >0 \exists \tau$ - подр. на $[a,b]: \sum_{i=0}^{n}w(f,[x_{i-1}, x])$ \\
+\end{center}
+
+$(\xRightarrow[]{\text{1}})$ Фиксираме $\epsilon > 0$ \\
+$\int_{a}^{b} + \frac{\epsilon}{2} = \upint\limits_{a}^{b}f + \frac{\epsilon}{2} > \upint\limits_{a}^{b}f \xRightarrow{} \exists \tau_1$ подр. на $[a,b], Sf(\tau_1)<\int_{a}^{b}f + \frac{\epsilon}{2}$ \\
+$\int_{a}^{b} - \frac{\epsilon}{2} = \lowint\limits_{a}^{b}f - \frac{\epsilon}{2} < \lowint\limits_{a}^{b}f \xRightarrow{} \exists \tau_2$ подр. на $[a,b], sf(\tau_2)<\int_{a}^{b}f - \frac{\epsilon}{2}$ \\
+$Sf(\tau_1)-sf(\tau_2) = \int_{a}^{b} + \frac{\epsilon}{2} - \int_{a}^{b} + \frac{\epsilon}{2}$ \\
+$Sf(\tau_1)-sf(\tau_2) < \epsilon$
+
+$(\xLeftarrow[]{\text{1}})$ Допускаме противното \\
+$\forall \tau_1, \tau_2: Sf(\tau_1) - sf(\tau_2) \ge \upint\limits_{a}^{b}f - \lowint\limits_{a}^{b}f > 0$ \\
+
+$(\xLeftarrow[]{\text{2}}) \tau_1 := \tau, \tau_2 := \tau$  \\
+
+$(\xRightarrow[]{\text{2}})$ Фиксираме $\epsilon > 0$, $\tau_1,\tau_2 \xrightarrow{} Sf(\tau_1)-sf(\tau_2) < \epsilon$ \\
+$\tau \ge \tau_1, \tau \ge \tau_2 \xRightarrow{} Sf(\tau)-sf(\tau) \le Sf(\tau_1) - sf(\tau_2) < \epsilon$
+
 \end{document}
