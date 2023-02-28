@@ -178,7 +178,7 @@ $\tau \ge \tau_1, \tau \ge \tau_2 \xRightarrow{} Sf(\tau)-sf(\tau) \le Sf(\tau_1
     $d(\tau):= max\{x_i-x_{i-1} : i \in {1,\dots,n}\}$
 }
 
-\subsection*{Непрекъснатите функции са интегруеми}
+\tvurdenie{Твъдение}{Непрекъснатите функции са интегруеми.}
 \underline{Доказателство:} $f(x): [a,b] \to \mathbb{R}$, непрекъсната. \\
 От Вайерщрас $\to$ ограничена. Нека $\epsilon > 0 $ \\
 От Кантор следва $\exists \delta >0 \forall x',x'' \in [a,b], |x'-x''|<\delta : f(x')-f(x'') < \frac{\epsilon}{2(b-a)}$ \\
@@ -188,6 +188,9 @@ $\tau \ge \tau_1, \tau \ge \tau_2 \xRightarrow{} Sf(\tau)-sf(\tau) \le Sf(\tau_1
 \[[x_{i-1}, x_i], x', x'' \in [x_{i-1}, x_i] \Rightarrow |x'-x''|<\delta\Rightarrow|f(x')-f(x'')|< \frac{\epsilon}{2(b-a)} \Rightarrow\]
 \[\Rightarrow w(f, [x_{i-1}, x_i]) \le \frac{\epsilon}{2(b-a)}\]
 \[\le_{*} \sum_{i=1}^{n}\frac{\epsilon}{2(b-a)}(x_i-x_{i-1}) = \frac{\epsilon}{2(b-a)}\sum_{i=1}^{n}(x_i-x_{i-1}) = \frac{\epsilon}{2} < \epsilon \square\]
+
+\tvurdenie{Твърдение}{Нека $f:[a,b] \to \mathbb{R}$ е ограничена и има краен брой точки на прекъсване, Тогава $f$ e интегруеми.}
+\underline{Доказателство:}
 
 
 
