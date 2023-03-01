@@ -5,6 +5,7 @@
 
 \usepackage{stix2}
 \usepackage{amsmath}
+\usepackage[makeroom]{cancel}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -177,21 +178,48 @@ $\tau \ge \tau_1, \tau \ge \tau_2 \xRightarrow{} Sf(\tau)-sf(\tau) \le Sf(\tau_1
 \opredelenie{Диаметър на $\tau$}{
     $d(\tau):= max\{x_i-x_{i-1} : i \in {1,\dots,n}\}$
 }
+\subsection*{Интегруемост на функции}
 
 \tvurdenie{Твъдение}{Непрекъснатите функции са интегруеми.}
 \underline{Доказателство:} $f(x): [a,b] \to \mathbb{R}$, непрекъсната. \\
 От Вайерщрас $\to$ ограничена. Нека $\epsilon > 0 $ \\
 От Кантор следва $\exists \delta >0 \forall x',x'' \in [a,b], |x'-x''|<\delta : f(x')-f(x'') < \frac{\epsilon}{2(b-a)}$ \\
 Взимаме $\tau: a=x_0<x_1<x_2<\dots<x_n=b$ такова, че $d(\tau)<\delta$. Тогава: \\
-\[Sf(\tau)-sf(\tau)=\sum_{i=1}^{n}w(fi[x_{i-1}, x_i])(x_{i-1}, x_i) \le_{*} \\ \]
+\[Sf(\tau)-sf(\tau)=\sum_{i=1}^{n}w(f,
+[x_{i-1}, x_i])(x_{i-1}, x_i) \le_{*} \\ \]
 Разглеждаме
 \[[x_{i-1}, x_i], x', x'' \in [x_{i-1}, x_i] \Rightarrow |x'-x''|<\delta\Rightarrow|f(x')-f(x'')|< \frac{\epsilon}{2(b-a)} \Rightarrow\]
 \[\Rightarrow w(f, [x_{i-1}, x_i]) \le \frac{\epsilon}{2(b-a)}\]
 \[\le_{*} \sum_{i=1}^{n}\frac{\epsilon}{2(b-a)}(x_i-x_{i-1}) = \frac{\epsilon}{2(b-a)}\sum_{i=1}^{n}(x_i-x_{i-1}) = \frac{\epsilon}{2} < \epsilon \square\]
 
+
 \tvurdenie{Твърдение}{Нека $f:[a,b] \to \mathbb{R}$ е ограничена и има краен брой точки на прекъсване, Тогава $f$ e интегруеми.}
-\underline{Доказателство:}
+\underline{Доказателство:} $y_1, y_2,\dots,y_k$ - точки на прекъсване на $f$ и $\eta >0$ \\
+\[C=[a,b]\backslash\bigcup_{i=1}^{k}(y_i-\eta,y_i+\eta)\] \\
+Обединение на краен брой затворени интервали и $f$ е непрекъсната върху $C$\\
+Кантор $\Rightarrow \exists\delta>0\forall x',x'' \in C: |x'-x''|<\delta:|f(x')-f(x'')|<\frac{\epsilon}{2(b-a)}$
 
+\begin{center}
+    Нека $\tau: a=x_0<x_1<\dots<x_n=b$ е разбиване
+\end{center}
+\begin{equation*}
+    \text{такова, че} \Rightarrow
+    \begin{cases*}
+        [x_{i-1},x_i] \subset C, \text{тогава} x_i-x_{i-1}<\delta \\
+        [x_{i-1},x_i]=[y_j-\eta,y_j+\eta]\cap[a,b], j\in{1,\dots,k}
+    \end{cases*}
+\end{equation*}
+Пресичаме с $[a,b]$ за да се застраховаме, че няма да излезем от интервала \\
 
+\begin{gather*}
+        Sf(\tau)-sf(\tau)=\sum_{i=1}^{n}w(f,[x_{i-1}, x_i])(x_i, x_{i-1}) \le\\
+        \le \sum_{[x_{i-1}, x_i] \subset C}^{n}w(f,[x_{i-1}, x_i])(x_i, x_{i-1}) 
+        +  \sum_{j=1}^{k}w(f,[y_j-\eta,y_j+\eta]\cap[a,b])2\eta\\
+        \le M-m \le \frac{\epsilon}{4(b-a)} \underbrace{\sum_{[x_{i-1}, x_i] \subset C}^{n}(x_i - x_{i-1})}_{\le b-a} + (M-m)2\eta k\\
+\end{gather*}
+
+\[Sf(\tau)-sf(\tau) \le \frac{\epsilon}{\cancel{4(b-a)}}\cancel{(b-a)} + (M-m)2\eta k < \epsilon\]
+
+Трябваше да изберем $\eta < \frac{\epsilon}{4k(M-m)} \square$
 
 \end{document}
